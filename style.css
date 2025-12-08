@@ -4,7 +4,16 @@
   gap: 15px;
 }
 
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Prevent scrolling if content overflows */
+    }
+
 .card {
+  border: #424242 2px solid;
   background: #222;
   padding: 20px;
   text-align: center;
@@ -33,4 +42,3 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
