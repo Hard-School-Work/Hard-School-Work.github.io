@@ -9,6 +9,13 @@
 
 <h1>Unblocked Games</h1>
 
+<div class="search-container">
+  <input type="text" id="search" placeholder="Search games..." />
+  <img id="search-icon" src="./images/SearchIcon.png" alt="Search" />
+</div>
+
+
+
 <div class="games">
   <a href="games/snowrider.html" class="card">Snow Rider</a>
   <a href="games/Gate-Solitare.html" class="card">Gate Solitaire</a>
@@ -20,6 +27,29 @@
   <a href="games/grow-a-garden.html" class="card">Grow a Garden</a>
   <a href="games/Cookie-Clicker.html" class="card">Cookie Clicker</a>
 </div>
+
+<script>
+const searchIcon = document.getElementById('search-icon');
+const searchInput = document.getElementById('search');
+const gameCards = document.querySelectorAll('.games .card');
+
+searchIcon.addEventListener('click', () => {
+  searchInput.classList.toggle('show');
+  if (searchInput.classList.contains('show')) {
+    searchInput.focus();
+  }
+});
+
+// Filter games
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase();
+  gameCards.forEach(card => {
+    const title = card.textContent.toLowerCase();
+    card.style.display = title.includes(query) ? '' : 'none';
+  });
+});
+</script>
+
 
 </body>
 </html>

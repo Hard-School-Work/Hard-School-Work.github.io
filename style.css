@@ -1,9 +1,77 @@
+@font-face {
+  font-family: 'Nunito'; /* Name you choose for the font */
+  src: url('fonts/Nunito-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* Helps prevent render-blocking */
+}
+
+/* Top-right search container */
+.search-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Search input */
+#search {
+  width: 0;
+  padding: 10px 15px;
+  border-radius: 25px;
+  border: 2px solid #424242;
+  background-color: #222;
+  color: white;
+  font-size: 16px;
+  outline: none;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  margin-right: 10px; /* space between bar and icon */
+  font-family: 'Nunito', Arial, sans-serif;
+}
+
+/* When active, expand to 250px */
+#search.show {
+  width: 250px;
+  opacity: 1;
+  font-family: 'Nunito', Arial, sans-serif;
+}
+
+/* Search icon */
+#search-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+
+/* Body styling */
+body {
+  background-color: #121212;
+  color: white;
+  font-family: 'Nunito', Arial, sans-serif;
+  margin: 0;
+  padding: 80px 20px 20px 20px; /* extra top padding for fixed search bar */
+}
+
+/* Heading */
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 3em;
+}
+
+/* Games grid */
 .games {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 15px;
+  gap: 20px;
+  max-width: 1500px;
+  margin: 0 auto; /* center the grid */
 }
 
+/* Individual game card */
 .card {
   border: #424242 2px solid;
   background: #222;
@@ -11,26 +79,50 @@
   text-align: center;
   border-radius: 10px;
   color: white;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .card:hover {
-  background: #000000;
+  background: #151515;
   cursor: pointer;
+  transform: scale(1.05);
 }
 
-body {
-  background-color: #121212;
-  color: white;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-}
-
+/* Links */
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .games {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  #search.show {
+    width: 200px; /* slightly smaller search bar on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding-top: 100px; /* more top padding for small screens */
+  }
+
+  .games {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  #search.show {
+    width: 150px; /* compact search bar on very small screens */
+  }
+
+  #search {
+    font-size: 10px;
+    padding: 8px 12px;
+    font-family: 'Nunito', Arial, sans-serif;
+  }
 }
